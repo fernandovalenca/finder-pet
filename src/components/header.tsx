@@ -4,7 +4,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 
 export default function Header() {
   return (
-    <header className="flex justify-between pt-10 pb-16 px-4">
+    <header className="flex justify-between p-10 px-4">
       <div className="flex items-center justify-center gap-6">
         <div className="flex items-center justify-center gap-2">
           <Bars3Icon className="h-10 w-10" />
