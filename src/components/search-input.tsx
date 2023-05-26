@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 
 const SearchInput = forwardRef<HTMLInputElement>((props, ref) => {
   return (
-    <div className="p-6 w-full bg-white flex items-center justify-between divide-x-2 border rounded-2xl my-12">
+    <div className="p-6 w-full bg-white flex items-center justify-between divide-x-2 border rounded-2xl my-12 sm:mt-20 md:mb-52 sm:mb-36">
       <div className="flex items-center">
         <MagnifyingGlassIcon className="h-8 w-8 mr-2 text-neutral-400" />
         <input
@@ -18,7 +18,7 @@ const SearchInput = forwardRef<HTMLInputElement>((props, ref) => {
         />
       </div>
       <button className="w-44 flex gap-2 ml-2">
-        <strong className="text-lg w-full">All Pets</strong>
+        <strong className="text-lg w-full font-medium">All Pets</strong>
         <ChevronDownIcon className="h-7 w-7" />
       </button>
     </div>
