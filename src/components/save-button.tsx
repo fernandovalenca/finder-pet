@@ -1,14 +1,10 @@
+import { classNames } from "@/utils/funtions";
 import { HeartIcon } from "@heroicons/react/24/solid";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
 type ButtonProps = {
   amount: number;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
-
-function classNames(...classes: any[]) {
-  return classes.filter(Boolean).join(" ");
-}
-
 const ButtonSave = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ amount = 0 }, ref) => {
     return (
