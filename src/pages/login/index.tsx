@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Login() {
   return (
     <main className={`lg:grid lg:grid-cols-[3fr_2fr] ${inter.className}`}>
-      <section className="min-h-screen w-full hidden lg:flex">
+      <section className="h-screen w-full hidden lg:flex">
         <header className="absolute top-0 left-0 hidden lg:flex flex-col ml-20 mt-24 max-w-[496px] text-neutral-100">
           <h1 className="hidden lg:flex items-center justify-start gap-3 lg:visible">
             <Logo />
@@ -44,7 +44,7 @@ export default function Login() {
           Photography by <span className="font-semibold">John Wick</span>
         </span>
       </section>
-      <section className="relative min-h-screen w-full flex-1 flex flex-col items-center justify-center">
+      <section className="relative h-screen w-full flex-1 flex flex-col items-center justify-center">
         <div className="w-full max-w-xs flex flex-col items-center justify-center">
           <ArrowLeftIcon className="absolute h-6 w-6 m-6 top-0 left-0 cursor-pointer" />
 
@@ -79,10 +79,10 @@ export default function Login() {
           </div>
 
           <div className="w-full flex flex-col gap-2 mt-8">
-            <SocialButton logo="google" onClick={() => signIn()}>
+            <SocialButton logo="google" onClick={() => signIn("google")}>
               Continue with Google
             </SocialButton>
-            <SocialButton logo="facebook">Continue with Facebook</SocialButton>
+            <SocialButton logo="facebook" onClick={() => signIn("facebook")}>Continue with Facebook</SocialButton>
             <SocialButton logo="twitter">Continue with Twitter</SocialButton>
           </div>
 
