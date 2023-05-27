@@ -2,7 +2,7 @@ import { AnchorHTMLAttributes, forwardRef } from "react";
 
 type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
+export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
   ({ children, className, ...rest }, ref) => {
     return (
       <a
@@ -15,5 +15,3 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
     );
   }
 );
-
-export default Anchor;

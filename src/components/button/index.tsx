@@ -4,7 +4,7 @@ type ButtonProps = {
   children?: React.ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children }, ref) => {
     return (
       <button
@@ -16,5 +16,3 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
-
-export default Button;

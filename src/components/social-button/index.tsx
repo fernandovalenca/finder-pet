@@ -11,7 +11,7 @@ type SocialButtonProps = {
   logo: keyof typeof logos;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const SocialButton = forwardRef<HTMLButtonElement, SocialButtonProps>(
+export const SocialButton = forwardRef<HTMLButtonElement, SocialButtonProps>(
   ({ children, logo, className, ...rest }, ref) => {
     const LogoSocial = logos[logo];
 
@@ -31,5 +31,3 @@ const SocialButton = forwardRef<HTMLButtonElement, SocialButtonProps>(
     );
   }
 );
-
-export default SocialButton;
