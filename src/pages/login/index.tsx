@@ -82,8 +82,12 @@ export default function Login() {
             <SocialButton logo="google" onClick={() => signIn("google")}>
               Continue with Google
             </SocialButton>
-            <SocialButton logo="facebook" onClick={() => signIn("facebook")}>Continue with Facebook</SocialButton>
-            <SocialButton logo="twitter">Continue with Twitter</SocialButton>
+            <SocialButton logo="facebook" onClick={() => signIn("facebook")}>
+              Continue with Facebook
+            </SocialButton>
+            <SocialButton logo="twitter" onClick={() => signIn("twitter")}>
+              Continue with Twitter
+            </SocialButton>
           </div>
 
           <span className="font-semibold text-xs mt-12 text-stone-800">
