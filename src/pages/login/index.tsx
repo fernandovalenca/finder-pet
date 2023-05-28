@@ -1,11 +1,4 @@
-import {
-  Anchor,
-  Button,
-  Input,
-  Logo,
-  SocialButton,
-  Spinner,
-} from "@/components";
+import { Anchor, Logo, SocialButton, LoginForm, Spinner } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { GetServerSideProps } from "next";
 import { signIn, getSession } from "next-auth/react";
@@ -55,18 +48,7 @@ export default function Login() {
             </strong>
           </div>
 
-          <form className="w-full flex flex-col items-center justify-center">
-            <header className="w-full flex flex-col items-center justify-center">
-              <h2 className="font-semibold text-xl mt-14 text-stone-800">
-                Sign in
-              </h2>
-            </header>
-            <div className="w-full flex flex-col gap-4 my-10">
-              <Input title="Username or Email" name="username" type="text" />
-              <Input title="Password" name="password" type="password" />
-            </div>
-            <Button type="submit">Sign in</Button>
-          </form>
+          <LoginForm />
 
           <Anchor className="my-8">Forgot your password?</Anchor>
 
