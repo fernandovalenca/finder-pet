@@ -1,9 +1,7 @@
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import { useForm, SubmitHandler } from "react-hook-form";
-import userStore from "@/store/user-store";
-import useUserSignIn from "@/queries/user/auth";
-import { useEffect } from "react";
+import useUserAuth from "@/queries/user/auth";
 
 type Inputs = {
   username: string;
@@ -16,15 +14,11 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const { user } = userStore();
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-  const userSignIn = useUserSignIn();
+  const { dispatchSignIn } = useUserAuth();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const res = userSignIn({
+    dispatchSignIn({
       email: data.username,
       password: data.password,
     });
@@ -43,13 +37,13 @@ export const LoginForm = () => {
           title="Username or Email"
           type="text"
           className={errors.username && "border-2 border-red-500"}
-          {...register("username", { required: true, minLength: 5 })}
+          {...register("username", { required: true, minLength: 6 })}
         />
         <Input
           title="Password"
           type="password"
           className={errors.password && "border-2 border-red-500"}
-          {...register("password", { required: true, minLength: 5 })}
+          {...register("password", { required: true, minLength: 6 })}
         />
       </div>
       <Button type="submit">Sign in</Button>
