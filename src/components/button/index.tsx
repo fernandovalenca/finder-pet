@@ -5,11 +5,12 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     return (
       <button
         ref={ref}
-        className="w-full bg-primary hover:bg-primary-hover rounded-lg text-white font-semibold text-sm p-3"
+        className={`w-full bg-primary hover:bg-primary-hover rounded-lg text-white font-semibold text-sm p-3 ${className}`}
+        {...rest}
       >
         {children}
       </button>

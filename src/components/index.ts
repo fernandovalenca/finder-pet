@@ -4,4 +4,11 @@ export * from "./input";
 export * from "./logo";
 export * from "./social-button";
 export * from "./svg-in-jsx";
-export * from './forms'
+export * from "./forms";
+export * from "./footer";
+export * from "./header";
+export * from "./index";
+export * from "./search-input";
+export * from "./button-save";
+export * from "./photo";
+export * from './user'

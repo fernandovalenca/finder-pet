@@ -5,7 +5,8 @@ import { ButtonHTMLAttributes, forwardRef } from "react";
 type ButtonProps = {
   amount: number;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
-const ButtonSave = forwardRef<HTMLButtonElement, ButtonProps>(
+
+export const ButtonSave = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ amount = 0 }, ref) => {
     return (
       <button
@@ -23,5 +24,3 @@ const ButtonSave = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
-
-export default ButtonSave;
