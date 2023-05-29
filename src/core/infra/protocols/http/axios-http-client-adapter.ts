@@ -11,7 +11,6 @@ export class AxiosHttpClientAdapter implements HttpClient {
   ): Promise<HttpResponse<ResponseData>> {
     try {
       const axiosResponse = await axios.request({
-        baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
         url: params.url,
         method: params.method,
         headers: params.headers,

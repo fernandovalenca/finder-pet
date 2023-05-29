@@ -12,7 +12,7 @@ export default class RemoteUserAuthGateway implements UserAuthGateway {
     try {
       const { data } = await this.httpClient.request<User>({
         method: "POST",
-        url: "/auth",
+        url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth`,
         body: input,
       });
 
