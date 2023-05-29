@@ -9,23 +9,28 @@ async function userSignIn(input: Input): Promise<User> {
   return user;
 }
 
-export default function useUserSignIn() {
-  const { signIn } = userStore();
-  const { mutate } = useMutation<User, unknown, Input, unknown>(
+export default function useUserAuth() {
+  const { signIn, handleError } = userStore();
+  const {
+    mutate: dispatchSignIn,
+    error,
+    isError,
+    isLoading,
+  } = useMutation<User, unknown, Input, unknown>(
     (input: Input) => userSignIn(input),
 
     {
       onSuccess: (user: User) => {
         signIn(user);
       },
-      onError: (error) => {
+      onError: (error: any) => {
         //TODO: Implement error handling
-        console.log(error);
+        handleError(error.message || "unexpected error");
       },
     }
   );
 
-  return mutate;
+  return { dispatchSignIn, error, isError, isLoading };
 }
 
 type Input = {

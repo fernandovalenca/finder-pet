@@ -1,19 +1,28 @@
 import User from "@/core/domain/entities/user";
 import { create } from "zustand";
 
-type UserState = {
+type State = {
   user: User | null;
-  signIn: (user: User) => Promise<void>;
-  signOut: () => Promise<void>;
+  error: string | null;
 };
 
-const userStore = create<UserState>((set) => ({
+type Actions = {
+  signIn: (user: User) => Promise<void>;
+  signOut: () => Promise<void>;
+  handleError: (err: string) => void;
+};
+
+const userStore = create<State & Actions>((set) => ({
   user: null,
+  error: null,
   signIn: async (user) => {
     set((state) => ({ ...state, user: user }));
   },
   signOut: async () => {
     set((state) => ({ ...state, user: null }));
+  },
+  handleError: (err) => {
+    set((state) => ({ ...state, error: err }));
   },
 }));
 
