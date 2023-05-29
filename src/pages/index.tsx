@@ -1,39 +1,64 @@
-import BaseButton from "@/components/base-button";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import Photo from "@/components/photo";
-import SearchInput from "@/components/search-input";
+import { Button, Footer, Header, PhotoCard, SearchInput } from "@/components";
+import { useShowMorePhotos } from "@/queries/photos";
+import photoStore from "@/store/photo-store";
+import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-
 export default function Home() {
-  function isMultipleOfSix(index: number): boolean {
+  const { photos, searchText, total, currentPage } = photoStore();
+  const { dispatchFindPhoto } = useShowMorePhotos();
+
+  const showMorePage = () => {
+    dispatchFindPhoto({ query: searchText, page: currentPage + 1 });
+  };
+
+  function isMultipleOfThree(index: number): boolean {
     return index % 3 === 0;
   }
-
   return (
-    <main className={`w-full flex flex-col bg-neutral-50 ${inter.className}`}>
+    <main
+      className={`w-full min-h-screen flex flex-col lg:px-16 bg-neutral-50 ${inter.className}`}
+    >
       <Header />
-      <div className="relative mx-4">
+      <div className="w-full flex flex-col items-center justify-center relative px-4">
         <SearchInput />
-        <div className="columns-1 sm:columns-2 md:columns-3">
+        {!!photos.length && (
+          <div className="w-full text-center text-stone-800 mb-16">
+            <h2 className="font-bold text-3xl">{searchText}</h2>
+            <span className="block text-base font-medium mt-4">
+              {total}{" "}
+              <span className="text-custom-gray-300">
+                results found for this search
+              </span>
+            </span>
+          </div>
+        )}
+        <div className="columns-1 md:columns-2 lg:columns-3">
           {photos.map((photo, index) => (
-            <Photo
-              key={index}
+            <PhotoCard
+              key={photo.id}
+              data={photo}
               className={
-                isMultipleOfSix(index)
+                isMultipleOfThree(index)
                   ? "aspect-9/16 mb-6"
                   : "aspect-square mb-6"
               }
             />
           ))}
         </div>
-        <div className="absolute flex items-center justify-center bg-gradient-to-b from-transparent to-white w-full h-64 bottom-0">
-          <BaseButton>Show more</BaseButton>
-        </div>
+        {!!photos.length && (
+          <div className="absolute flex items-center justify-center bg-gradient-to-b from-transparent to-white w-full h-64 bottom-0">
+            <Button
+              onClick={showMorePage}
+              className="max-w-xs md:max-w-xl lg:max-w-3xl py-7 rounded-lg text-white text-2xl font-semibold"
+            >
+              Show more
+            </Button>
+          </div>
+        )}
       </div>
       <Footer />
     </main>
