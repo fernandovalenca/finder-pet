@@ -1,13 +1,25 @@
-import { Anchor, Logo, SocialButton, LoginForm, Spinner } from "@/components";
+import {
+  Anchor,
+  Logo,
+  SocialButton,
+  LoginForm,
+  Spinner,
+  AnchorLink,
+} from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { GetServerSideProps } from "next";
 import { signIn, getSession } from "next-auth/react";
 
 import { Inter } from "next/font/google";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Login() {
+  const router = useRouter();
+
+  const previousRoute = () => router.back();
+
   return (
     <main className={`lg:grid lg:grid-cols-[3fr_2fr] ${inter.className}`}>
       <section className="h-screen w-full hidden lg:flex">
@@ -39,7 +51,9 @@ export default function Login() {
       </section>
       <section className="relative h-screen w-full flex-1 flex flex-col items-center justify-center">
         <div className="w-full max-w-xs flex flex-col items-center justify-center">
-          <ArrowLeftIcon className="absolute h-6 w-6 m-6 top-0 left-0 cursor-pointer" />
+          <button onClick={previousRoute}>
+            <ArrowLeftIcon className="absolute h-6 w-6 m-6 top-0 left-0 cursor-pointer" />
+          </button>
 
           <div className="flex items-center justify-center gap-3 lg:hidden">
             <Logo />
@@ -73,7 +87,10 @@ export default function Login() {
           </div>
 
           <span className="font-semibold text-xs mt-12 text-stone-800">
-            Not a member? <Anchor className="my-8">Sign up now</Anchor>
+            Not a member?{" "}
+            <AnchorLink href={"/sign-up"} className="my-8">
+              Sign up now
+            </AnchorLink>
           </span>
         </div>
       </section>
