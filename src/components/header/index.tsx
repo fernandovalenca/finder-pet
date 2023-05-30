@@ -2,12 +2,9 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Logo } from "../logo";
 import { ButtonSave } from "../button-save";
-import { useSession } from "next-auth/react";
 import { User } from "../user";
 
 export function Header() {
-  const { data: session } = useSession();
-
   return (
     <header className="flex justify-between p-10 px-4">
       <div className="flex-1 flex items-center justify-start gap-6">

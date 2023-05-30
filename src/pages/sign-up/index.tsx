@@ -1,11 +1,4 @@
-import {
-  Anchor,
-  Logo,
-  SocialButton,
-  LoginForm,
-  Spinner,
-  AnchorLink,
-} from "@/components";
+import { Anchor, Logo, SocialButton, Spinner, SignUpForm, AnchorLink } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { GetServerSideProps } from "next";
 import { signIn, getSession } from "next-auth/react";
@@ -62,9 +55,13 @@ export default function Login() {
             </strong>
           </div>
 
-          <LoginForm />
+          <SignUpForm />
 
-          <Anchor className="my-8">Forgot your password?</Anchor>
+          <span className="w-full text-center font-normal text-xs mt-6 mb-10">
+            By clicking the “Sign up” button, you agree to Finder Pet{" "}
+            <Anchor>Terms of Service</Anchor> and confirm that you have read our
+            <Anchor>Privacy Policy</Anchor>.
+          </span>
 
           <div className="w-full max-w-xs flex justify-center items-center">
             <div className="w-full border-b border-neutral-300" />
@@ -87,10 +84,7 @@ export default function Login() {
           </div>
 
           <span className="font-semibold text-xs mt-12 text-stone-800">
-            Not a member?{" "}
-            <AnchorLink href={"/sign-up"} className="my-8">
-              Sign up now
-            </AnchorLink>
+            Already a member? <AnchorLink href={"/login"} className="my-8">Sign In</AnchorLink>
           </span>
         </div>
       </section>
