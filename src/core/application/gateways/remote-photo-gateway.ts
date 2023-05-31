@@ -2,7 +2,7 @@ import { Photo } from "@/core/domain/entities/photo";
 import { PhotoGateway } from "@/core/domain/gateways/photo-gateway";
 import { HttpClient } from "../protocols/http";
 
-export class RemotePhotoGateway implements PhotoGateway {
+export default class RemotePhotoGateway implements PhotoGateway {
   constructor(private httpClient: HttpClient) {}
 
   async findPhotos(input: { query: string; page: number }): Promise<Output> {
