@@ -3,16 +3,15 @@ import { Input } from "@/components/input";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Password from "@/core/domain/entities/password";
+import useCreateUser from "@/queries/user/create-user";
 
 const createUserFormSchema = z.object({
-  email: z
-    .string()
-    .nonempty("O e-mail é obrigatório")
-    .email("Formato de e-email inválido"),
-  username: z.string().min(6, "O precisa ter no mínimo 6 caracteres"),
+  email: z.string().nonempty("Email is required").email("Invalid email format"),
+  username: z.string().min(6, "Username must be at least 6 characters long"),
   name: z
     .string()
-    .nonempty("O nome é obrigatório")
+    .nonempty("Name is required")
     .transform((name) => {
       return name
         .trim()
@@ -22,12 +21,23 @@ const createUserFormSchema = z.object({
         })
         .join(" ");
     }),
-  password: z.string().min(6, "O precisa ter no mínimo 6 caracteres"),
+  password: z
+    .string()
+    .min(6, "The password must have at least 6 characters")
+    .refine((password) => {
+      try {
+        new Password(password);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }, "Invalid password"),
 });
 
 type CreateUserFormSchemaType = z.infer<typeof createUserFormSchema>;
 
 export const SignUpForm = () => {
+  const { dispatchCreateUser } = useCreateUser();
   const {
     register,
     handleSubmit,
@@ -37,7 +47,11 @@ export const SignUpForm = () => {
   });
 
   const onSubmit: SubmitHandler<CreateUserFormSchemaType> = (data) => {
-    console.log(data);
+    try {
+      dispatchCreateUser(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
