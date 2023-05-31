@@ -2,12 +2,12 @@ import User from "@/core/domain/entities/user";
 import { create } from "zustand";
 
 type State = {
-  user: User | null;
+  user: Omit<User, "username" | "password"> | null;
   error: string | null;
 };
 
 type Actions = {
-  signIn: (user: User) => Promise<void>;
+  signIn: (user: Omit<User, "username" | "password">) => Promise<void>;
   signOut: () => Promise<void>;
   handleError: (err: string) => void;
 };
