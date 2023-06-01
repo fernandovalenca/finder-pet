@@ -5,7 +5,7 @@ export const User = () => {
   const { data: session } = useSession();
 
   return (
-    <div className="flex gap-2 items-center justify-center">
+    <div className="hidden lg:flex gap-2 items-center justify-center">
       <img
         loading="lazy"
         className="h-9 w-9 rounded-full"
