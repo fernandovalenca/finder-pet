@@ -57,9 +57,9 @@ export default function Login() {
 
           <SignUpForm />
 
-          <span className="w-full text-center font-normal text-xs mt-6 mb-10">
+          <span className="w-full text-center font-normal text-xs mt-6 mb-6">
             By clicking the “Sign up” button, you agree to Finder Pet{" "}
-            <Anchor>Terms of Service</Anchor> and confirm that you have read our
+            <Anchor>Terms of Service</Anchor> and confirm that you have read our{" "}
             <Anchor>Privacy Policy</Anchor>.
           </span>
 

@@ -20,7 +20,7 @@ export default function Home() {
   }
   return (
     <main
-      className={`w-full min-h-screen flex flex-col lg:px-16 bg-neutral-50 ${inter.className}`}
+      className={`w-full min-h-screen flex justify-between flex-col lg:px-16 bg-neutral-50 ${inter.className}`}
     >
       <Header />
       <div className="w-full flex flex-col items-center justify-center relative px-4">

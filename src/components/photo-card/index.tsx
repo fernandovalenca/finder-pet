@@ -1,12 +1,12 @@
 import { Photo } from "@/core/domain/entities/photo";
 import { HeartIcon } from "@heroicons/react/24/solid";
-import { ImgHTMLAttributes } from "react";
+import { ImgHTMLAttributes, memo } from "react";
 
 type PhotoProps = {
   data: Photo;
 } & ImgHTMLAttributes<HTMLImageElement>;
 
-export const PhotoCard = ({ data, className, ...rest }: PhotoProps) => {
+export const PhotoCard = memo(({ data, className, ...rest }: PhotoProps) => {
   return (
     <div className="relative">
       <div className="absolute top-4 right-4 bg-white p-2 rounded-lg shadow-sm">
@@ -27,4 +27,4 @@ export const PhotoCard = ({ data, className, ...rest }: PhotoProps) => {
       </div>
     </div>
   );
-};
+});
