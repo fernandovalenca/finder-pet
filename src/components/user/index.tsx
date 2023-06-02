@@ -7,15 +7,17 @@ export const User = () => {
 
   return (
     <div className="hidden lg:flex gap-2 items-center justify-center">
-      <Image
-        width={500}
-        height={500}
-        priority={true}
-        quality={80}
-        className="h-9 w-9 rounded-full"
-        src={session?.user?.image || ""}
-        alt="Foto do usuário logado"
-      />
+      {session?.user?.image && (
+        <Image
+          width={500}
+          height={500}
+          priority={true}
+          quality={80}
+          className="h-9 w-9 rounded-full"
+          src={session.user.image}
+          alt="Foto do usuário logado"
+        />
+      )}
       <button onClick={() => signOut()}>
         <ChevronDownIcon className="h-6 w-6" />
       </button>
