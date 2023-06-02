@@ -14,7 +14,7 @@ export default class RemotePhotoGateway implements PhotoGateway {
 
       return {
         total: data.total,
-        totalPages: data.totoal_pages,
+        totalPages: data.total_pages,
         photos: data.results,
       };
     } catch {
