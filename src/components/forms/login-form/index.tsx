@@ -36,7 +36,7 @@ export const LoginForm = () => {
       className="w-full flex flex-col items-center justify-center"
     >
       <header className="w-full flex flex-col items-center justify-center">
-        <h2 className="font-semibold text-xl mt-14 text-stone-800">Sign in</h2>
+        <h2 className="font-semibold text-xl mt-14 text-stone-800 dark:text-neutral-100">Sign in</h2>
       </header>
       <div className="w-full flex flex-col gap-4 my-10">
         <div className="relative">
