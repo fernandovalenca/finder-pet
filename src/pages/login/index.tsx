@@ -5,6 +5,7 @@ import {
   LoginForm,
   Spinner,
   AnchorLink,
+  ThemeSwitch,
 } from "@/components";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { GetServerSideProps } from "next";
@@ -21,7 +22,9 @@ export default function Login() {
   const previousRoute = () => router.back();
 
   return (
-    <main className={`lg:grid lg:grid-cols-[3fr_2fr] ${inter.className}`}>
+    <main
+      className={`lg:grid lg:grid-cols-[3fr_2fr] dark:bg-slate-800 ${inter.className}`}
+    >
       <section className="h-screen w-full hidden lg:flex">
         <header className="absolute top-0 left-0 hidden lg:flex flex-col ml-20 mt-24 max-w-[496px] text-neutral-100">
           <h1 className="hidden lg:flex items-center justify-start gap-3 lg:visible">
@@ -52,8 +55,10 @@ export default function Login() {
       <section className="relative h-screen w-full flex-1 flex flex-col items-center justify-center">
         <div className="w-full max-w-xs flex flex-col items-center justify-center">
           <button onClick={previousRoute}>
-            <ArrowLeftIcon className="absolute h-6 w-6 m-6 top-0 left-0 cursor-pointer" />
+            <ArrowLeftIcon className="absolute h-6 w-6 m-6 top-0 left-0 cursor-pointer dark:text-neutral-100" />
           </button>
+
+          <ThemeSwitch className="absolute h-20 w-20 -top-0 right-0 cursor-pointer" />
 
           <div className="flex items-center justify-center gap-3 lg:hidden">
             <Logo />
@@ -86,7 +91,7 @@ export default function Login() {
             </SocialButton>
           </div>
 
-          <span className="font-semibold text-xs mt-12 text-stone-800">
+          <span className="font-semibold text-xs mt-12 text-stone-800 dark:text-neutral-100">
             Not a member?{" "}
             <AnchorLink href={"/sign-up"} className="my-8">
               Sign up now
