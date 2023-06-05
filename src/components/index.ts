@@ -11,6 +11,7 @@ export * from "./index";
 export * from "./search-input";
 export * from "./button-save";
 export * from "./photo-card";
-export * from './user'
-export * from './user';
-export * from './anchor-link'
+export * from "./user";
+export * from "./user";
+export * from "./anchor-link";
+export * from "./theme-switch";
