@@ -19,7 +19,7 @@ export const User = () => {
         />
       )}
       <button onClick={() => signOut()}>
-        <ChevronDownIcon className="h-6 w-6" />
+        <ChevronDownIcon className="h-6 w-6 dark:text-neutral-100" />
       </button>
     </div>
   );
