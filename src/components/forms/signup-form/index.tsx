@@ -60,7 +60,7 @@ export const SignUpForm = () => {
       className="w-full flex flex-col items-center justify-center"
     >
       <header className="w-full flex flex-col items-center justify-center">
-        <h2 className="font-semibold text-xl mt-14 text-stone-800">
+        <h2 className="font-semibold text-xl mt-14 text-stone-800 dark:text-neutral-100">
           Create an account
         </h2>
       </header>
